@@ -20,6 +20,10 @@ new Vue({
   data: {
     todos: []
   },
+  created() {
+    // インスタンス作成時に自動的に fetch() する
+    this.todos = todoStorage.fetch()
+  },
   watch: {
     todos: {
       handler: function (todos) {
