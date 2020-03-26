@@ -6,7 +6,9 @@
   </head>
   <body>
     <div id="app">
+      <!-- テーブルを作成 -->
       <table>
+        <!-- テーブルのヘッダー -->
         <thead>
           <tr>
             <th>ID</th>
@@ -15,7 +17,20 @@
             <th>-</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <!-- データを表示するテーブル -->
+        <tbody>
+          <!-- ToDoの要素を1行づつ繰り返し表示 -->
+          <tr v-for="item in todos" v-bind:key="item.id">
+            <th>{{ item.id }}</th>
+            <td>{{ item.commnet }}</td>
+            <td class="state">
+              <button>{{ item.state }}</button>
+            </td>
+            <td class="button">
+              <button>削除</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
