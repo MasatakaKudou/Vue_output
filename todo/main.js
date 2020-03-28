@@ -23,7 +23,7 @@ var todoStorage = {
 }
 
 // ルートインスタンスを作成
-const app = new Vue({
+new Vue({
   // DOM要素のオブジェクトかCSSセレクタで指定
   el: '#app',
   // 利用するデータを定義、プロパティと呼ばれる
@@ -33,5 +33,22 @@ const app = new Vue({
   },
   // データの変更やサーバーにHTTPリクエストを送る際に用いる
   methods: {
+    // 追加の処理
+    doAdd: function (event, value) {
+      // refで名前をつけておいた要素を参照
+      var comment = this.$refs.comment
+      if (!comment.value.length) {
+        return
+      }
+      // { ID, コメント, 作業状態 }をtodosへpush
+      this.todos.push({
+        id: todoStorage.uid++,
+        comment: comment.value,
+        state: 0
+      })
+      console.log(todos)
+      // フォーム要素を空にする
+      comment.value = ''
+    }
   }
 })
